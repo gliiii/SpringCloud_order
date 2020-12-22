@@ -23,14 +23,14 @@ public class HystrixController {
 //			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
 //	})
 
-    @HystrixCommand(commandProperties = {
-            @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),  				//设置熔断
-            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),	//请求数达到后才计算
-            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"), //熔断时间
-            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60"),	//错误率
-    })
+//    @HystrixCommand(commandProperties = {
+//            @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),  				//设置熔断
+//            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),	//请求数达到后才计算
+//            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"), //熔断时间
+//            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60"),	//错误率
+//    })
 
-//    @HystrixCommand
+    @HystrixCommand
     @GetMapping("/getProductInfoList")
     public String getProductInfoList(@RequestParam("number") Integer number) {
         if (number % 2 == 0) {
