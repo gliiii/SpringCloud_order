@@ -12,6 +12,11 @@ spring:
         myMessage:
           group: order
           content-type: application/json
+  zipkin:
+    base-url: http://47.104.245.4:9411/
+  sleuth:
+    sampler:
+      percentage: 1
 eureka:
   client:
     service-url:
@@ -25,7 +30,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 1000
+            timeoutInMilliseconds: 5000
     getProductInfoList:
       execution:
         isolation:
@@ -36,3 +41,6 @@ feign:
     enabled: true
 management:
   context-path: /
+logging:
+  level:
+    org.springframework.cloud.netflix.feign: debug
