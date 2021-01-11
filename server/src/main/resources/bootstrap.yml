@@ -14,9 +14,13 @@ spring:
           content-type: application/json
   zipkin:
     base-url: http://47.104.245.4:9411/
+    sender:
+      type: web
+
   sleuth:
     sampler:
-      percentage: 1
+#      percentage: 1
+      probability: 1
 eureka:
   client:
     service-url:
@@ -24,23 +28,26 @@ eureka:
 #PRODUCT:
 #  ribbon:
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 5000
-    getProductInfoList:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 1000
-feign:
-  hystrix:
-    enabled: true
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 5000
+#    getProductInfoList:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 1000
+#feign:
+#  hystrix:
+#    enabled: true
 management:
   context-path: /
 logging:
   level:
-    org.springframework.cloud.netflix.feign: debug
+    org.springframework.cloud.openfeign: debug
+server:
+  ssl:
+    key-store-type:
